@@ -2,6 +2,7 @@ export const actionTypes = {
     SET_USER: "SET_USER",
     SET_TARGETS: "SET_TARGETS",
     ADD_TARGET: "ADD_TARGET",
+    SET_THEME: "SET_THEME",
 }
 
 const reducer = (state, action) => {
@@ -21,6 +22,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 targets: [...state.targets, action.target],
+            }
+        case actionTypes.SET_THEME:
+            return {
+                ...state,
+                theme: action.theme,
             }
         default:
             return state
