@@ -6,3 +6,10 @@ export type Button = {
     icon?: JSX.Element
     isTransparent?: boolean
 }
+
+export type NavItem = {
+    text: string
+    path?: string
+    icon: JSX.Element
+    onClick?: () => void
+}

@@ -6,6 +6,8 @@ import { auth } from '../firebase.config'
 import ToggleTheme from './ToggleTheme'
 import { actionTypes } from '../context/reducer'
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
+
 
 const NotLoggedIn = () => {
     const [{ theme, user }, dispatch] = useStateValue()
@@ -24,7 +26,8 @@ const NotLoggedIn = () => {
 		})
 		if (typeof window !== 'undefined') {
 			localStorage.setItem('user', JSON.stringify(providerData[0]))
-        }
+		}
+		Cookies.set(`$user.uid}`, 'true')
         router.push('/')
 	}
 	return (
