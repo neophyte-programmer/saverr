@@ -4,8 +4,7 @@ import Header from '../../components/Header'
 import SideNav from '../../components/SideNav'
 import { useStateValue } from '../../context/StateProvider'
 
-
-const Savings = () => {
+const Settings = () => {
     const [{ theme, user }, dispatch] = useStateValue()
     const router = useRouter()
     
@@ -23,11 +22,11 @@ const Savings = () => {
           <div className='w-full h-full flex  max-h-screen'>
 					<SideNav />
 					<section className='flex-1'>
-						<Header title='Savings' />
+						<Header title='Settings' />
 					</section>
 				</div>
     </div>
   )
 }
 
-export default Savings
+export default Settings

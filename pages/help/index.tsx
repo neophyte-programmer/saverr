@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import SideNav from '../../components/SideNav'
 import { useStateValue } from '../../context/StateProvider'
-
-
-const Savings = () => {
-    const [{ theme, user }, dispatch] = useStateValue()
+const Help = () => {
+  const [{ theme, user }, dispatch] = useStateValue()
     const router = useRouter()
     
     useEffect(() => {
@@ -23,11 +21,11 @@ const Savings = () => {
           <div className='w-full h-full flex  max-h-screen'>
 					<SideNav />
 					<section className='flex-1'>
-						<Header title='Savings' />
+						<Header title='Help' />
 					</section>
 				</div>
     </div>
   )
 }
 
-export default Savings
+export default Help
