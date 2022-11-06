@@ -6,11 +6,17 @@ import Button from '../../components/Button'
 import { useRouter } from 'next/router'
 import Loader from '../../components/Loader'
 import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import { fetchUser } from '../../utils/fetchLocalStorageData'
+import SideNav from '../../components/SideNav'
 
 const Dashboard = () => {
 	const [{ theme, user }, dispatch] = useStateValue()
 	const router = useRouter()
 	const [loading, setLoading] = useState(false)
+    const userInfo = fetchUser()
+    
+  
 
 	// Redirect to login page if user is not logged in
 	useEffect(() => {
@@ -26,21 +32,7 @@ const Dashboard = () => {
 		}, 3000)
 	}, [])
 
-	const logout = () => {
-		console.log('logging out...')
-
-		dispatch({
-			type: actionTypes.SET_USER,
-			user: null,
-		})
-
-		if (typeof window !== 'undefined') {
-			localStorage.clear()
-		}
-
-		Cookies.remove(`${user?.uid}`)
-		router.push('/')
-	}
+	
 	return (
 		<div
 			className={`w-screen h-screen ${
@@ -50,21 +42,26 @@ const Dashboard = () => {
 			}`}
 		>
 			{loading ? (
-				<div className='w-full h-full flex flex-col gap-8 items-center justify-center'>
+				<div className={`w-full h-full flex flex-col gap-8 items-center justify-center ${
+                    theme === 'dark'
+                        ? 'bg-[#111] text-white'
+                        : 'bg-gray-100 text-black'
+                }`}>
 					<Loader />
-					<p className={`animate-pulse text-4xl`}>
+					<p className={`animate-pulse text-2xl sm:text-4xl`}>
 						Welcome,{' '}
 						<span className='text-green-500'>
 							{' '}
-							{user['displayName']}{' '}
+							{userInfo['displayName']}{' '}
 						</span>
 					</p>
 				</div>
 			) : (
-				<div className='w-full h-full'>
-					Click button to logout
-                        <Button text='Logout' onClick={logout} />
-                        <Footer />
+				<div className='w-full h-full flex  max-h-screen'>
+					<SideNav />
+					<section className='flex-1'>
+						<Header />
+					</section>
 				</div>
 			)}
 		</div>
