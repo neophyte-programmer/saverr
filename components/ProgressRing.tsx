@@ -9,17 +9,16 @@ const cleanPercentage = (percentage: number) => {
 }
 
 const Circle = ({ color, percentage, radius }: ProgressCircle) => {
-	const r = 70
-	const circ = 2 * Math.PI * r
+	const circ = 2 * Math.PI * radius
 	const strokePct = ((100 - percentage) * circ) / 100 // where stroke will start, e.g. from 15% to 100%.
 	return (
 		<circle
-			r={r}
+			r={radius}
 			cx={100}
 			cy={100}
 			fill='transparent'
 			stroke={strokePct !== circ ? color : ''} // remove colour as 0% sets full circumference
-			strokeWidth={'1rem'}
+			strokeWidth={'0.5rem'}
 			strokeDasharray={circ}
 			strokeDashoffset={percentage ? strokePct : 0}
 		></circle>
@@ -40,12 +39,12 @@ const Text = ({ percentage }: ProgressText) => {
 	)
 }
 
-const ProgressRing = ({ percentage, radius }: ProgressPie) => {
+const ProgressRing = ({ percentage, radius, dimesions }: ProgressPie) => {
     const pct = cleanPercentage(percentage)
     const [{theme}] = useStateValue()
     
 	return (
-		<svg width={200} height={200} stroke-linecap='round'>
+		<svg stroke-linecap='round'>
 			<g transform={`rotate(-90 ${'100 100'})`}>
 				<Circle color={theme === 'dark' ? '#222' : '#ddd'} percentage={100} radius={radius} />
 				<Circle
