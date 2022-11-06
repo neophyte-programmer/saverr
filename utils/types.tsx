@@ -47,4 +47,25 @@ export type ProgressText = {
 export type ProgressPie = {
     radius: number
     percentage: number
+    dimesions: number
+}
+
+export type ProgressBar = {
+    percentage: number
+}
+
+export type Deposit = {
+    id: string
+    amount: number
+    source: string
+    date: string
+}
+
+export type Target = {
+    id: string
+    title: string
+    amount: number
+    current: number
+    deposits: Deposit[]
+    isComplete: boolean
 }
