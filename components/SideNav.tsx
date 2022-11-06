@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { BiSave, BiCreditCardAlt } from 'react-icons/bi'
 import { BsPower, BsCircleSquare } from 'react-icons/bs'
-import { MdDashboard, MdSettings } from 'react-icons/md'
+import { MdDashboard, MdSettings, MdHelp } from 'react-icons/md'
 
 import { FaPowerOff } from 'react-icons/fa'
 import { actionTypes } from '../context/reducer'
@@ -67,6 +67,11 @@ const SideNav = () => {
 						text='settings'
 						icon={<MdSettings />}
 						path='/settings'
+					/>
+					<NavItem
+						text='Help'
+						icon={<MdHelp />}
+						path='/help'
 					/>
 				</div>
 			</div>
